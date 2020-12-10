@@ -1,5 +1,7 @@
 import matplotlib
 import matplotlib.pyplot as plt
+import random
+import time
 
 def squared_distance(a, b):
     s = 0
@@ -33,9 +35,11 @@ def update_centroids(data, clusters, k):
 '''
 def k_means(k, data):
     # initialize
+    random.seed(time.time())
+    ran_nums = random.sample(range(len(data)), k)
     centroid = []
-    for i in range(k):
-        dp = list(data.values())[i]
+    for ran_num in ran_nums:
+        dp = list(data.values())[ran_num]
         centroid.append(dp)
     update = True
     old_clusters = []
